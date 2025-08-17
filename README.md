@@ -26,12 +26,12 @@ Para executar este projeto em sua máquina local, siga os passos abaixo:
 
 1.  **Clone o Repositório:**
     ```bash
-    git clone [URL_DO_SEU_REPOSITORIO]
+    git clone https://github.com/andreviictorx/SIGESTE
     ```
 
 2.  **Navegue até o Diretório do Projeto:**
     ```bash
-    cd [pasta-do-projeto]
+    cd src
     ```
 
 3.  **Compile o TypeScript para JavaScript:**
