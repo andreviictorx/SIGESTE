@@ -1,0 +1,91 @@
+
+
+.records {
+    width: 100%;
+    user-select: none;
+    border-collapse: collapse;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+.records thead {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.records th {
+    height: 50px;
+    font-size: 1rem;
+    padding: 12px 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.records td {
+    height: 50px;
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--secondary-color);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.records th:nth-child(1), .records td:nth-child(1) { width: 5%; }
+.records th:nth-child(2), .records td:nth-child(2) { width: 10%; } 
+.records th:nth-child(3), .records td:nth-child(3) { width: 5%; } 
+.records th:nth-child(4), .records td:nth-child(4) { width: 8%; } 
+.records th:nth-child(5), .records td:nth-child(5) { width: 8%; } 
+.records th:nth-child(6), .records td:nth-child(6) { width: 8%; } 
+.records th:nth-child(7), .records td:nth-child(7) { width: 10%; } 
+
+.records tr:last-child td {
+    border-bottom: none;
+}
+
+.records tbody > tr:hover {
+    background-color: var(--secondary-color);
+}
+
+
+
+/* 🔹 Mantenha o seu CSS para mobile */
+@media (max-width: 640px) {
+    .records {
+        box-shadow: none;
+        border-spacing: 5px;
+        table-layout: auto;
+    }
+    .records thead {
+        display: none;
+    }
+    .records tr {
+        display: block;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        margin-bottom: 15px;
+        border-radius: 8px;
+        background-color: var(--bg-card);
+    }
+    .records td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        text-align: left;
+    }
+    .records td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--text-muted);
+    }
+    .records td:last-child {
+        min-width: unset;
+        text-align: right;
+    }
+    .records tr:hover {
+        background-color: var(--bg-card);
+    }
+}

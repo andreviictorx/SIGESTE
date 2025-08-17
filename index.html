@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sistema Escolar - Gestão</title>
+    
+    <link rel="stylesheet" href="src/css/button.css" />
+    <link rel="stylesheet" href="src/css/modal.css" />
+    <link rel="stylesheet" href="src/css/records.css" />
+    <link rel="stylesheet" href="src/css/main.css" />
+    <script type="module" src="dist/main.js" defer></script>
+    <style>
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="header-title">Sistema Escolar - Gestão</h1>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <button type="button" data-tab="alunos" class="tab-button button blue active">Alunos</button>
+            <button type="button" data-tab="turmas" class="tab-button button blue">Turmas</button>
+            <button type="button" data-tab="disciplinas" class="tab-button button blue">Disciplinas</button>
+            <button type="button" data-tab="professores" class="tab-button button blue">Professores</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="alunos" class="tab-content active">
+            <button id="cadastrarAluno" class="button green cadastrarBtn mobile">Cadastrar Aluno</button>
+            <button id="cadastrarAlunoDesktop" class="button green cadastrarBtn">Cadastrar Aluno</button>
+            <table id="tableAlunos" class="records">
+                <thead>
+                    <tr>
+                        <th>Matrícula</th>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Turma</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div id="modalAluno" class="modal">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2 id="titleAluno">Novo Aluno</h2>
+                        <span id="closeAluno" class="modal-close">&#10006;</span>
+                    </header>
+                    <form id="formAluno" class="modal-form">
+                        <input id="matricula" placeholder="Matrícula" required class="modal-field" />
+                        <input id="nome" placeholder="Nome" required data-index="new" class="modal-field" />
+                        <input id="idade" type="number" placeholder="Idade" required class="modal-field" />
+                        <select id="turma" class="modal-field">
+                            <option value="">Selecione uma Turma</option>
+                        </select>
+                    </form>
+                    <footer class="modal-footer">
+                        <button id="salvarAluno" class="button green">Salvar</button>
+                        <button id="cancelarAluno" class="button red">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+        </section>
+
+        <section id="turmas" class="tab-content" style="display:none;">
+            <button id="cadastrarTurma" class="button green cadastrarBtn mobile">Cadastrar Turma</button>
+            <button id="cadastrarTurmaDesktop" class="button green cadastrarBtn">Cadastrar Turma</button>
+            <table id="tableTurmas" class="records">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Ano</th>
+                        <th>Alunos</th>
+                        <th>Professores</th>
+                        <th>Disciplinas</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div id="modalTurma" class="modal">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2 id="titleTurma">Nova Turma</h2>
+                        <span id="closeTurma" class="modal-close">&#10006;</span>
+                    </header>
+                    <form id="formTurma" class="modal-form">
+                        <input id="codigoTurma" placeholder="Código" required class="modal-field" />
+                        <input id="nomeTurma" placeholder="Nome" required data-index="new" class="modal-field" />
+                        <input id="anoTurma" type="number" placeholder="Ano" required class="modal-field" />
+                        
+                        <select id="alunosTurma" class="modal-field" multiple>
+                            <option value="" disabled>Adicionar Alunos</option>
+                        </select>
+                        <select id="professoresTurma" class="modal-field" multiple>
+                            <option value="" disabled>Adicionar Professores</option>
+                        </select>
+                        <select id="disciplinasTurma" class="modal-field" multiple>
+                            <option value="" disabled>Adicionar Disciplinas</option>
+                        </select>
+                    </form>
+                    <footer class="modal-footer">
+                        <button id="salvarTurma" class="button green">Salvar</button>
+                        <button id="cancelarTurma" class="button red">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+        </section>
+
+        <section id="disciplinas" class="tab-content" style="display:none;">
+            <button id="cadastrarDisciplina" class="button green cadastrarBtn mobile">Cadastrar Disciplina</button>
+            <button id="cadastrarDisciplinaDesktop" class="button green cadastrarBtn">Cadastrar Disciplina</button>
+            <table id="tableDisciplinas" class="records">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Carga Horária</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div id="modalDisciplina" class="modal">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2 id="titleDisciplina">Nova Disciplina</h2>
+                        <span id="closeDisciplina" class="modal-close">&#10006;</span>
+                    </header>
+                    <form id="formDisciplina" class="modal-form">
+                        <input id="codigoDisciplina" placeholder="Código" required class="modal-field" />
+                        <input id="nomeDisciplina" placeholder="Nome" required data-index="new" class="modal-field" />
+                        <input id="cargaHoraria" type="number" placeholder="Carga Horária" required class="modal-field" />
+                    </form>
+                    <footer class="modal-footer">
+                        <button id="salvarDisciplina" class="button green">Salvar</button>
+                        <button id="cancelarDisciplina" class="button red">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+        </section>
+
+        <section id="professores" class="tab-content" style="display:none;">
+            <button id="cadastrarProfessor" class="button green cadastrarBtn mobile">Cadastrar Professor</button>
+            <button id="cadastrarProfessorDesktop" class="button green cadastrarBtn">Cadastrar Professor</button>
+            <table id="tableProfessores" class="records">
+                <thead>
+                    <tr>
+                        <th>Matrícula</th>
+                        <th>Nome</th>
+                        <th>Área</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div id="modalProfessor" class="modal">
+                <div class="modal-content">
+                    <header class="modal-header">
+                        <h2 id="titleProfessor">Novo Professor</h2>
+                        <span id="closeProfessor" class="modal-close">&#10006;</span>
+                    </header>
+                    <form id="formProfessor" class="modal-form">
+                        <input id="matriculaProfessor" placeholder="Matrícula" required class="modal-field" />
+                        <input id="nomeProfessor" placeholder="Nome" required data-index="new" class="modal-field" />
+                        <input id="areaProfessor" placeholder="Área" required class="modal-field" />
+                    </form>
+                    <footer class="modal-footer">
+                        <button id="salvarProfessor" class="button green">Salvar</button>
+                        <button id="cancelarProfessor" class="button red">Cancelar</button>
+                    </footer>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

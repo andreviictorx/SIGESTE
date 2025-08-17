@@ -1,0 +1,122 @@
+/* src/css/main.css */
+
+:root {
+    --primary-color: #3B82F6;
+    --secondary-color: #E2E8F0;
+    --accent-color: #10B981;
+    --danger-color: #EF4444;
+    --danger-dark: #DC2626; 
+    --text-dark: #1F2937;
+    --text-muted: #6B7280;
+    --bg-light: #F8FAFC;
+    --bg-card: #FFFFFF;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    padding-top: 70px;
+}
+
+header {
+    background-color: var(--primary-color);
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 1px 2px var(--shadow-color);
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+.header-title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+
+}
+
+main {
+    flex-grow: 1;
+    width: 90%;
+    max-width: 1200px;
+    margin: 5vh auto;
+    padding: 50px;
+    box-shadow: var(--shadow-soft);
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    font-size: 0.9rem;
+    padding: 20px;
+    color: var(--text-muted);
+}
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+    header {
+        height: 60px;
+        padding: 0 15px;
+    }
+    .header-title {
+        font-size: 1.5rem;
+    }
+    nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        z-index: 999;
+        padding: 10px 0; /* Adicionado padding para o menu */
+    }
+    nav.active {
+        display: flex;
+    }
+    .tab-button {
+        width: 100%;
+        text-align: left;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        margin: 5px 0; /* Adicionado margin para espaçamento entre botões */
+    }
+    .tab-button:last-child {
+        border-bottom: none;
+    }
+    main {
+        padding: 20px;
+        margin: 20px auto;
+        width: 95%;
+        box-shadow: none;
+    }
+}

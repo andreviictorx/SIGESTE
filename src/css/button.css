@@ -1,0 +1,91 @@
+
+.button {
+    margin: 5px 0;
+    border-style: none;
+    height: 40px;
+    padding: 6px 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.button.blue {
+    background-color: var(--primary-colorcolor);
+    color: white;
+    border: 1px solid;
+}
+
+.button.green {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.button.red {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.button.red:hover {
+    background-color: var(--danger-dark);
+}
+
+.button:hover:not(.tab-button) {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+
+.tab-button {
+    background-color: transparent;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    font-weight: 600;
+    padding: 8px 12px;
+}
+
+.tab-button:hover {
+    background-color: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.tab-button.active {
+    background-color: white;
+    color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+.button.mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .button.mobile {
+        display: block;
+        color: transparent;
+        font-size: 0;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+        background-color: var(--accent-color); 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+    .button.mobile::before {
+        content: "+";
+        color: white;
+        font-size: 2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: 700;
+    }
+}
