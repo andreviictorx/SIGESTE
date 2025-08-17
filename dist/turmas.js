@@ -187,7 +187,7 @@ export function iniciarTurmas() {
     }
     if (form)
         form.dataset.iniciado = 'true';
-    document.getElementById('cadastrarTurmaoDesktop')?.addEventListener('click', openModalTurma);
+    document.getElementById('cadastrarTurmaDesktop')?.addEventListener('click', openModalTurma);
     document.getElementById('modalTurma')?.addEventListener('click', (ev) => {
         if (ev.target.id === 'modalTurma')
             closeModalTurma();
